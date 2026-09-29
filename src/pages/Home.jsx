@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import Loading from "../components/Loading";
 
-const API_URL = "https://fakestoreapi.com/products";
+const API_URL = "https://dummyjson.com/products?limit=0";
 
 function Home({ onAddToCart }) {
   const [products, setProducts] = useState([]);
@@ -20,8 +20,8 @@ function Home({ onAddToCart }) {
           throw new Error("Could not load products.");
         }
 
-        const data = await response.json();
-        setProducts(data);
+       const data = await response.json();
+           setProducts(data.products);
       } catch (err) {
         setError("Something went wrong while loading products.");
       } finally {
